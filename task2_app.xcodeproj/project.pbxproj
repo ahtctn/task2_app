@@ -8,17 +8,39 @@
 
 /* Begin PBXBuildFile section */
 		7B75A2752A9F9DF500CFD689 /* task2_appApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B75A2742A9F9DF500CFD689 /* task2_appApp.swift */; };
-		7B75A2772A9F9DF500CFD689 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B75A2762A9F9DF500CFD689 /* ContentView.swift */; };
+		7B75A2772A9F9DF500CFD689 /* AlarmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B75A2762A9F9DF500CFD689 /* AlarmView.swift */; };
 		7B75A2792A9F9DF700CFD689 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B75A2782A9F9DF700CFD689 /* Assets.xcassets */; };
 		7B75A27C2A9F9DF700CFD689 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B75A27B2A9F9DF700CFD689 /* Preview Assets.xcassets */; };
+		7B75A2832A9F9E9900CFD689 /* LocalNotificationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B75A2822A9F9E9900CFD689 /* LocalNotificationsManager.swift */; };
+		7B75A2852A9F9EBC00CFD689 /* NextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B75A2842A9F9EBC00CFD689 /* NextView.swift */; };
+		7B75A2872A9F9ED500CFD689 /* CloseAlarmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B75A2862A9F9ED500CFD689 /* CloseAlarmView.swift */; };
+		7B75A28C2A9F9F1900CFD689 /* LocalNotificationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B75A28B2A9F9F1900CFD689 /* LocalNotificationModel.swift */; };
+		7B75A28F2A9FB7EF00CFD689 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B75A28E2A9FB7EF00CFD689 /* LaunchScreen.storyboard */; };
+		7B75A2992AA22FA900CFD689 /* AlarmViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B75A2982AA22FA900CFD689 /* AlarmViewModel.swift */; };
+		7B75A29C2AA2305500CFD689 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B75A29B2AA2305500CFD689 /* Constants.swift */; };
+		7B75A2A32AA235AF00CFD689 /* alarmSound.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 7B75A2A22AA235AF00CFD689 /* alarmSound.aiff */; };
+		7B75A2A52AA23E6C00CFD689 /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B75A2A42AA23E6C00CFD689 /* DatePickerView.swift */; };
+		7B75A2A82AA23FF700CFD689 /* SetAlarmButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B75A2A72AA23FF700CFD689 /* SetAlarmButton.swift */; };
+		7B75A2AA2AA240A100CFD689 /* AlarmSetText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B75A2A92AA240A100CFD689 /* AlarmSetText.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		7B75A2712A9F9DF500CFD689 /* task2_app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = task2_app.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B75A2742A9F9DF500CFD689 /* task2_appApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = task2_appApp.swift; sourceTree = "<group>"; };
-		7B75A2762A9F9DF500CFD689 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		7B75A2762A9F9DF500CFD689 /* AlarmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmView.swift; sourceTree = "<group>"; };
 		7B75A2782A9F9DF700CFD689 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7B75A27B2A9F9DF700CFD689 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		7B75A2822A9F9E9900CFD689 /* LocalNotificationsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationsManager.swift; sourceTree = "<group>"; };
+		7B75A2842A9F9EBC00CFD689 /* NextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextView.swift; sourceTree = "<group>"; };
+		7B75A2862A9F9ED500CFD689 /* CloseAlarmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseAlarmView.swift; sourceTree = "<group>"; };
+		7B75A28B2A9F9F1900CFD689 /* LocalNotificationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationModel.swift; sourceTree = "<group>"; };
+		7B75A28E2A9FB7EF00CFD689 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		7B75A2982AA22FA900CFD689 /* AlarmViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmViewModel.swift; sourceTree = "<group>"; };
+		7B75A29B2AA2305500CFD689 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		7B75A2A22AA235AF00CFD689 /* alarmSound.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = alarmSound.aiff; sourceTree = "<group>"; };
+		7B75A2A42AA23E6C00CFD689 /* DatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
+		7B75A2A72AA23FF700CFD689 /* SetAlarmButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetAlarmButton.swift; sourceTree = "<group>"; };
+		7B75A2A92AA240A100CFD689 /* AlarmSetText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmSetText.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,9 +73,14 @@
 		7B75A2732A9F9DF500CFD689 /* task2_app */ = {
 			isa = PBXGroup;
 			children = (
-				7B75A2742A9F9DF500CFD689 /* task2_appApp.swift */,
-				7B75A2762A9F9DF500CFD689 /* ContentView.swift */,
+				7B75A29A2AA2304D00CFD689 /* Helper */,
+				7B75A2972AA22F8400CFD689 /* Launcher */,
+				7B75A2962AA22F7300CFD689 /* Manager */,
+				7B75A2942AA22F5500CFD689 /* Model */,
+				7B75A2932AA22F5200CFD689 /* ViewModel */,
+				7B75A2922AA22F4D00CFD689 /* View */,
 				7B75A2782A9F9DF700CFD689 /* Assets.xcassets */,
+				7B75A2882A9F9EEF00CFD689 /* Sound */,
 				7B75A27A2A9F9DF700CFD689 /* Preview Content */,
 			);
 			path = task2_app;
@@ -65,6 +92,76 @@
 				7B75A27B2A9F9DF700CFD689 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		7B75A2882A9F9EEF00CFD689 /* Sound */ = {
+			isa = PBXGroup;
+			children = (
+				7B75A2A22AA235AF00CFD689 /* alarmSound.aiff */,
+			);
+			path = Sound;
+			sourceTree = "<group>";
+		};
+		7B75A2922AA22F4D00CFD689 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7B75A2842A9F9EBC00CFD689 /* NextView.swift */,
+				7B75A2762A9F9DF500CFD689 /* AlarmView.swift */,
+				7B75A2862A9F9ED500CFD689 /* CloseAlarmView.swift */,
+				7B75A2952AA22F6100CFD689 /* Components */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		7B75A2932AA22F5200CFD689 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				7B75A2982AA22FA900CFD689 /* AlarmViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		7B75A2942AA22F5500CFD689 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7B75A28B2A9F9F1900CFD689 /* LocalNotificationModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		7B75A2952AA22F6100CFD689 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				7B75A2A42AA23E6C00CFD689 /* DatePickerView.swift */,
+				7B75A2A72AA23FF700CFD689 /* SetAlarmButton.swift */,
+				7B75A2A92AA240A100CFD689 /* AlarmSetText.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		7B75A2962AA22F7300CFD689 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				7B75A2822A9F9E9900CFD689 /* LocalNotificationsManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		7B75A2972AA22F8400CFD689 /* Launcher */ = {
+			isa = PBXGroup;
+			children = (
+				7B75A2742A9F9DF500CFD689 /* task2_appApp.swift */,
+				7B75A28E2A9FB7EF00CFD689 /* LaunchScreen.storyboard */,
+			);
+			path = Launcher;
+			sourceTree = "<group>";
+		};
+		7B75A29A2AA2304D00CFD689 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				7B75A29B2AA2305500CFD689 /* Constants.swift */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -126,6 +223,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				7B75A27C2A9F9DF700CFD689 /* Preview Assets.xcassets in Resources */,
+				7B75A2A32AA235AF00CFD689 /* alarmSound.aiff in Resources */,
+				7B75A28F2A9FB7EF00CFD689 /* LaunchScreen.storyboard in Resources */,
 				7B75A2792A9F9DF700CFD689 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -137,8 +236,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7B75A2772A9F9DF500CFD689 /* ContentView.swift in Sources */,
+				7B75A2992AA22FA900CFD689 /* AlarmViewModel.swift in Sources */,
+				7B75A2772A9F9DF500CFD689 /* AlarmView.swift in Sources */,
+				7B75A2832A9F9E9900CFD689 /* LocalNotificationsManager.swift in Sources */,
+				7B75A2AA2AA240A100CFD689 /* AlarmSetText.swift in Sources */,
+				7B75A2A52AA23E6C00CFD689 /* DatePickerView.swift in Sources */,
+				7B75A2872A9F9ED500CFD689 /* CloseAlarmView.swift in Sources */,
 				7B75A2752A9F9DF500CFD689 /* task2_appApp.swift in Sources */,
+				7B75A28C2A9F9F1900CFD689 /* LocalNotificationModel.swift in Sources */,
+				7B75A2852A9F9EBC00CFD689 /* NextView.swift in Sources */,
+				7B75A2A82AA23FF700CFD689 /* SetAlarmButton.swift in Sources */,
+				7B75A29C2AA2305500CFD689 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
