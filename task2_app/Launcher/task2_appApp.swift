@@ -12,7 +12,9 @@ struct task2_appApp: App {
     @StateObject var lnManager = LocalNotificationsManager()
     var body: some Scene {
         WindowGroup {
-            AlarmView(viewModel: AlarmViewModel(lnManager: lnManager))
+            //AlarmView(viewModel: AlarmViewModel(lnManager: lnManager))
+                //.environmentObject(lnManager)
+            ContentView(viewModel: .init(lnManager: lnManager))
                 .environmentObject(lnManager)
         }
     }
