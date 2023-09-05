@@ -8,59 +8,48 @@
 import SwiftUI
 
 struct TimerView: View {
-    @State private var targetDate = Date()
-    @State private var remainingTime: TimeInterval = 0
-    @State private var timer: Timer? = nil
+    @State private var countdownValue: Int = 0
+    @State private var isCountingDown: Bool = false
+    @State private var countdownTimer: Timer? = nil
     
     var body: some View {
         VStack {
-            Text("Geri Sayım")
+            Text("Countdown: \(countdownValue)")
                 .font(.largeTitle)
             
-            DatePicker("Hedef Tarih Seçin", selection: $targetDate, in: Date()..., displayedComponents: .hourAndMinute)
-                .datePickerStyle(.wheel)
-                .labelsHidden()
-            
-            
-            
-            Text("Kalan Süre:")
-                .font(.headline)
-            
-            Text(timeFormatted(remainingTime))
-                .font(.largeTitle)
-                .onAppear {
-                    startTimer()
+            Button(isCountingDown ? "Stop" : "Start") {
+                if isCountingDown {
+                    stopCountdown()
+                } else {
+                    startCountdown()
                 }
-            
-            Button("Sıfırla") {
-                stopTimer()
-                remainingTime = 0
             }
-        }
-        .padding()
-    }
-    
-    func startTimer() {
-        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
-            let now = Date()
-            remainingTime = targetDate.timeIntervalSince(now)
-            if remainingTime <= 0 {
-                stopTimer()
-            }
+            .padding()
+            .background(Color.blue)
+            .foregroundColor(.white)
+            .cornerRadius(10)
         }
     }
     
-    func stopTimer() {
-        timer?.invalidate()
-        timer = nil
+    private func startCountdown() {
+        guard countdownValue > 0 else {
+            return // Avoid starting countdown with non-positive value
+        }
+        
+        isCountingDown = true
+        countdownTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
+            if countdownValue > 0 {
+                countdownValue -= 1
+            } else {
+                stopCountdown()
+            }
+        }
     }
     
-    func timeFormatted(_ seconds: TimeInterval) -> String {
-        let formatter = DateComponentsFormatter()
-        formatter.allowedUnits = [.hour, .minute, .second]
-        formatter.unitsStyle = .positional
-        formatter.zeroFormattingBehavior = .pad
-        return formatter.string(from: seconds) ?? "00:00:00"
+    private func stopCountdown() {
+        isCountingDown = false
+        countdownTimer?.invalidate()
+        countdownTimer = nil
     }
 }
 

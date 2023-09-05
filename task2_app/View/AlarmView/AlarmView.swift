@@ -15,18 +15,23 @@ struct AlarmView: View {
     }
 
     var body: some View {
-        NavigationView {
-            VStack(alignment: .center, spacing: 10) {
-                if viewModel.isGranted {
-                    DatePickerView(viewModel: viewModel)
-                    SetAlarmButton(viewModel: viewModel)
 
-                    if viewModel.isVisible {
-                        AlarmSetText(viewModel: viewModel)
+        NavigationView {
+            ZStack {
+                Color("backgroundColor")
+                    .ignoresSafeArea(.all)
+                VStack(alignment: .center, spacing: 10) {
+                    if viewModel.isGranted {
+                        DatePickerView(viewModel: viewModel)
+                        SetAlarmButton(viewModel: viewModel)
+                        
+                        if viewModel.isVisible {
+                            AlarmSetText(viewModel: viewModel)
+                        }
                     }
                 }
+                .navigationTitle("Alarm")
             }
-            .navigationTitle("Alarm")
         }
         .navigationViewStyle(.stack)
         .task {
@@ -34,6 +39,7 @@ struct AlarmView: View {
             await viewModel.getCurrentSettings()
             await viewModel.getPendingRequests()
         }
+        
     }
 }
 

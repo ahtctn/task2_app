@@ -16,22 +16,37 @@ struct ContentView: View {
         self._alarmViewModel = StateObject(wrappedValue: viewModel)
     }
     
+    
+    
     var body: some View {
         TabView(selection: $selectedTab) {
             AlarmView(viewModel: alarmViewModel)
                 .tabItem {
-                    Label("Alarm", systemImage: "alarm.fill")
+                    //Label("Alarm", systemImage: "alarm.fill")
+                    VStack {
+                        Image(systemName: "alarm.fill")
+                            .font(.title)
+                            .foregroundColor(.orange)
+                        Text("Alarm")
+                    }
                 }
                 .tag(0)
             
             TimerView()
                 .tabItem {
-                    Label("Timer", image: "clock.fill")
+                    //Label("Timer", systemImage: "timelapse")
+                    VStack {
+                        Image(systemName: "timelapse")
+                            .font(.title)
+                            .foregroundColor(.orange)
+                        Text("Timer")
+                    }
                 }
                 .tag(1)
             
             
         }
+        .accentColor(Color("orangeColor"))
         
     }
 }

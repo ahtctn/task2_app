@@ -21,6 +21,10 @@ struct DatePickerView: View {
                 .datePickerStyle(.wheel)
                 .padding(.horizontal)
                 .padding(.vertical)
+                // .colorScheme(.dark)
+                .colorInvert()
+                .colorMultiply(.white)
+                .labelsHidden()
             Spacer()
         }
         

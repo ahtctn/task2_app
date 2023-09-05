@@ -15,18 +15,22 @@ struct SetAlarmButton: View {
     }
     
     var body: some View {
+        
         Button("Set Alarm") {
             viewModel.setAlarm()
         }
-
+        
         .sheet(item: $viewModel.lnManager.nextView, content: {nextView in
             nextView.view()
         })
         .buttonStyle(.borderedProminent)
         .controlSize(.large)
         .buttonBorderShape(.capsule)
-        .tint(.orange)
+        .tint(Color("orangeColor"))
+        
     }
+    
+    
 }
 
 struct SetAlarmButton_Previews: PreviewProvider {
