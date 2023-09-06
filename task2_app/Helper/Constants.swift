@@ -11,4 +11,8 @@ import UserNotifications
 enum Constants {
     static let alarmSound: String = "alarmSound"
     static let notificationSound = UNNotificationSound.init(named: UNNotificationSoundName(rawValue: "alarmSound.aiff"))
+    static let bundleImageName = "bundleImageName"
+    static let closeAlarmViewHourFont1 = "RubikMonoOne-Regular"
+    
+    static let closeAlarmViewHourFont2 = "Monoton-Regular"
 }

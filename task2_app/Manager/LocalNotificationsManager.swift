@@ -55,6 +55,14 @@ class LocalNotificationsManager: NSObject, ObservableObject{
             content.sound = notificationSound
         }
         
+        if let bundleImageName = localNotification.bundleImageName {
+            if let url = Bundle.main.url(forResource: bundleImageName, withExtension: "") {
+                if let attachment = try? UNNotificationAttachment(identifier: bundleImageName, url: url) {
+                    content.attachments = [attachment]
+                }
+            }
+        }
+        
         if localNotification.scheduleType == .time {
             guard let timeInterval = localNotification.timeInterval else { return }
             let trigger = UNTimeIntervalNotificationTrigger(timeInterval: timeInterval, repeats: localNotification.repeats)

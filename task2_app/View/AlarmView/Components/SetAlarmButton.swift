@@ -27,6 +27,7 @@ struct SetAlarmButton: View {
         .controlSize(.large)
         .buttonBorderShape(.capsule)
         .tint(Color("orangeColor"))
+        .foregroundColor(.white)
         
     }
     

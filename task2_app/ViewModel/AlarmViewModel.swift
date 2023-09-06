@@ -22,8 +22,13 @@ class AlarmViewModel: ObservableObject {
 
     func setAlarm() {
         let dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: scheduleDate)
-        var localNotification = LocalNotificationModel(identifier: UUID().uuidString, title: "Wake Up", body: "It's time to start a new day.", repeats: false, dateComponents: dateComponents, notificationSound: Constants.notificationSound)
-
+        var localNotification = LocalNotificationModel(identifier: UUID().uuidString,
+                                                       title: "Wake Up",
+                                                       body: "It's time to start a new day.",
+                                                       repeats: false,
+                                                       dateComponents: dateComponents,
+                                                       notificationSound: Constants.notificationSound)
+        localNotification.bundleImageName = Constants.bundleImageName
         localNotification.userInfo = ["nextView": NextView.closeTheAlarm.rawValue]
 
         let copiedNotification = localNotification

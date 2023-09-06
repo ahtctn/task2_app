@@ -13,11 +13,11 @@ enum NextView: String, Identifiable {
         self.rawValue
     }
     
-    @ViewBuilder
+    @MainActor @ViewBuilder
     func view() -> some View{
         switch self {
          case .closeTheAlarm:
-           CloseAlarmView()
+            CloseAlarmView(viewModel: .init(lnManager: LocalNotificationsManager()))
         }
     }
 }

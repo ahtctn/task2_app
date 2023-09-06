@@ -16,7 +16,7 @@ struct AlarmSetText: View {
     
     var body: some View {
         Text(viewModel.setAlarmText())
-            .foregroundColor(.secondary)
+            .foregroundColor(Color("orangeColor"))
             .opacity(viewModel.isVisible ? 1.0 : 0.0)
             .transition(.opacity)
     }
@@ -25,5 +25,6 @@ struct AlarmSetText: View {
 struct AlarmSetText_Previews: PreviewProvider {
     static var previews: some View {
         AlarmSetText(viewModel: AlarmViewModel(lnManager: .init()))
+            .previewLayout(.sizeThatFits)
     }
 }

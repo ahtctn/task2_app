@@ -9,28 +9,50 @@ import SwiftUI
 
 struct AlarmView: View {
     @StateObject private var viewModel: AlarmViewModel
-
+    
     init(viewModel: AlarmViewModel) {
         self._viewModel = StateObject(wrappedValue: viewModel)
     }
-
+    
     var body: some View {
-
+        
         NavigationView {
             ZStack {
                 Color("backgroundColor")
                     .ignoresSafeArea(.all)
                 VStack(alignment: .center, spacing: 10) {
                     if viewModel.isGranted {
-                        DatePickerView(viewModel: viewModel)
-                        SetAlarmButton(viewModel: viewModel)
-                        
-                        if viewModel.isVisible {
-                            AlarmSetText(viewModel: viewModel)
+                        //MARK: VSTACK BUNUN İÇERİSİNE EKLENECEK.
+                    }
+                    Spacer()
+                    DatePickerView(viewModel: viewModel)
+                        .labelsHidden()
+                    SetAlarmButton(viewModel: viewModel)
+                    
+                    if viewModel.isVisible {
+                        AlarmSetText(viewModel: viewModel)
+                    }
+                    
+                    List {
+                        ForEach((1...20), id: \.self) {_ in
+                            AlarmTableViewCell()
+                                .listRowBackground(Color("secondaryBackgroundColor"))
+                                
                         }
                     }
+                    .shadow(color: .blue, radius: 10, x: 0, y: 10)
+
+                    .background {
+                        Image("bg")
+                            .resizable()
+                            .opacity(0.2)
+                            .scaledToFit()
+                            .frame(width: 200, height: 200, alignment: .center)
+                    }
+                    .scrollContentBackground(.hidden)
+                    Spacer()
                 }
-                .navigationTitle("Alarm")
+                
             }
         }
         .navigationViewStyle(.stack)

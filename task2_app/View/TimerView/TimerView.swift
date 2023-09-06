@@ -13,21 +13,28 @@ struct TimerView: View {
     @State private var countdownTimer: Timer? = nil
     
     var body: some View {
-        VStack {
-            Text("Countdown: \(countdownValue)")
-                .font(.largeTitle)
-            
-            Button(isCountingDown ? "Stop" : "Start") {
-                if isCountingDown {
-                    stopCountdown()
-                } else {
-                    startCountdown()
+        ZStack {
+            Color("backgroundColor")
+                .ignoresSafeArea()
+            VStack {
+                Text("Countdown: \(countdownValue)")
+                    .font(.largeTitle)
+                    .foregroundColor(.white)
+                
+                Button(isCountingDown ? "Stop" : "Start") {
+                    if isCountingDown {
+                        stopCountdown()
+                    } else {
+                        startCountdown()
+                    }
                 }
+                .padding()
+                .background(Color("orangeColor"))
+                .foregroundColor(.white)
+                .cornerRadius(10)
             }
-            .padding()
-            .background(Color.blue)
-            .foregroundColor(.white)
-            .cornerRadius(10)
+            //.background(Color("backgroundColor"))
+            .background(Color("backgroundColor"), ignoresSafeAreaEdges: .all)
         }
     }
     

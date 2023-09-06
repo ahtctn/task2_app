@@ -11,45 +11,52 @@ struct ContentView: View {
     
     @State private var selectedTab = 0
     @StateObject private var alarmViewModel: AlarmViewModel
-
+    let navigationTitleColor = Color("orangeColor")
+    
     init(viewModel: AlarmViewModel) {
         self._alarmViewModel = StateObject(wrappedValue: viewModel)
+        
+        let uiColor = UIColor(navigationTitleColor)
+        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: uiColor]
+        UITabBar.appearance().unselectedItemTintColor = .white
     }
-    
-    
     
     var body: some View {
         TabView(selection: $selectedTab) {
-            AlarmView(viewModel: alarmViewModel)
-                .tabItem {
-                    //Label("Alarm", systemImage: "alarm.fill")
-                    VStack {
-                        Image(systemName: "alarm.fill")
-                            .font(.title)
-                            .foregroundColor(.orange)
-                        Text("Alarm")
-                    }
+            NavigationView {
+                AlarmView(viewModel: alarmViewModel)
+                    .navigationBarTitle("Alarm Title", displayMode: .inline)
+            }
+            
+            .tabItem {
+                VStack {
+                    Image(systemName: "alarm.fill")
+                        .font(.title)
+                        .foregroundColor(.orange)
+                    Text("Alarm")
                 }
-                .tag(0)
+            }
+            .tag(0)
+            .toolbarBackground(Color.red, for: .tabBar)
             
-            TimerView()
-                .tabItem {
-                    //Label("Timer", systemImage: "timelapse")
-                    VStack {
-                        Image(systemName: "timelapse")
-                            .font(.title)
-                            .foregroundColor(.orange)
-                        Text("Timer")
-                    }
+            NavigationView {
+                TimerView()
+                    .navigationBarTitle("Timer", displayMode: .inline)
+            }
+            .tabItem {
+                VStack {
+                    Image(systemName: "timelapse")
+                        .font(.title)
+                        .foregroundColor(.orange)
+                    Text("Timer")
                 }
-                .tag(1)
-            
-            
+            }
+            .tag(1)
         }
         .accentColor(Color("orangeColor"))
-        
     }
 }
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {

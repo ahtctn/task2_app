@@ -16,16 +16,15 @@ struct DatePickerView: View {
     }
     
     var body: some View {
-        HStack {
+        VStack {
             DatePicker("", selection: $viewModel.scheduleDate, displayedComponents: .hourAndMinute)
                 .datePickerStyle(.wheel)
                 .padding(.horizontal)
                 .padding(.vertical)
-                // .colorScheme(.dark)
                 .colorInvert()
                 .colorMultiply(.white)
                 .labelsHidden()
-            Spacer()
+            //Spacer()
         }
         
     }
