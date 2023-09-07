@@ -24,7 +24,7 @@ struct AlarmSetText: View {
 
 struct AlarmSetText_Previews: PreviewProvider {
     static var previews: some View {
-        AlarmSetText(viewModel: AlarmViewModel(lnManager: .init()))
+        AlarmSetText(viewModel: AlarmViewModel(lnManager: .init(), alarms: .constant([.distantFuture])))
             .previewLayout(.sizeThatFits)
     }
 }

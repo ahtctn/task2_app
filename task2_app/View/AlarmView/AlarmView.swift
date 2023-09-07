@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AlarmView: View {
     @StateObject private var viewModel: AlarmViewModel
-    
+    @State private var alarms = [Date]()
     init(viewModel: AlarmViewModel) {
         self._viewModel = StateObject(wrappedValue: viewModel)
     }
@@ -27,28 +27,36 @@ struct AlarmView: View {
                     Spacer()
                     DatePickerView(viewModel: viewModel)
                         .labelsHidden()
-                    SetAlarmButton(viewModel: viewModel)
+                    SetAlarmButton(viewModel: viewModel, alarms: $alarms)
                     
                     if viewModel.isVisible {
                         AlarmSetText(viewModel: viewModel)
                     }
                     
-                    List {
-                        ForEach((1...20), id: \.self) {_ in
-                            AlarmTableViewCell()
-                                .listRowBackground(Color("secondaryBackgroundColor"))
-                                
-                        }
-                    }
-                    .shadow(color: .blue, radius: 10, x: 0, y: 10)
-
-                    .background {
+                    ZStack {
+                        
+                        Color("orangeColor")
+                            .frame(width: 410, height: 490, alignment: .center)
+                            .cornerRadius(20)
+                        
                         Image("bg")
                             .resizable()
-                            .opacity(0.2)
+                            .opacity(0.5)
                             .scaledToFit()
                             .frame(width: 200, height: 200, alignment: .center)
+                            .shadow(color: .black, radius: 10, x: 0, y: 10)
+                        
+                        List {
+                            ForEach(alarms, id: \.self) { alarm in
+                                AlarmTableViewCell(alarmDate: alarm)
+                                    .listRowBackground(Color("secondaryBackgroundColor"))
+                            }
+                            .onDelete(perform: deleteItem)
+                        }
+                        .transition(.opacity)
+                        
                     }
+                    
                     .scrollContentBackground(.hidden)
                     Spacer()
                 }
@@ -63,11 +71,16 @@ struct AlarmView: View {
         }
         
     }
+    func deleteItem(at offsets: IndexSet) {
+        withAnimation {
+            alarms.remove(atOffsets: offsets)
+        }
+    }
 }
 
 
 struct AlarmView_Previews: PreviewProvider {
     static var previews: some View {
-        AlarmView(viewModel: AlarmViewModel(lnManager: LocalNotificationsManager()))
+        AlarmView(viewModel: AlarmViewModel(lnManager: LocalNotificationsManager(), alarms: .constant([.distantFuture])))
     }
 }

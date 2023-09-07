@@ -10,11 +10,12 @@ import SwiftUI
 @main
 struct task2_appApp: App {
     @StateObject var lnManager = LocalNotificationsManager()
+    @State private var alarms = [Date]()
     
     var body: some Scene {
         WindowGroup {
             
-            ContentView(viewModel: .init(lnManager: lnManager))
+            ContentView(viewModel: .init(lnManager: lnManager, alarms: .constant(alarms)))
                 .environmentObject(lnManager)
         }
     }

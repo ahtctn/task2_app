@@ -32,7 +32,7 @@ struct DatePickerView: View {
 
 struct DatePickerView_Previews: PreviewProvider {
     static var previews: some View {
-        DatePickerView(viewModel: AlarmViewModel(lnManager: .init()))
+        DatePickerView(viewModel: AlarmViewModel(lnManager: .init(), alarms: .constant([.distantFuture])))
             .previewLayout(.sizeThatFits)
             
     }

@@ -13,14 +13,16 @@ class AlarmViewModel: ObservableObject {
     @Published var scheduleDate = Date()
     @Published var isVisible = false
     @Published var isGranted = false
-
+    @Binding var alarms: [Date]
+    
     var lnManager: LocalNotificationsManager
-
-    init(lnManager: LocalNotificationsManager) {
+    
+    init(lnManager: LocalNotificationsManager, alarms: Binding<[Date]>) {
         self.lnManager = lnManager
+        self._alarms = alarms
     }
-
-    func setAlarm() {
+    
+    func setAlarm(alarms: Binding<[Date]>) {
         let dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: scheduleDate)
         var localNotification = LocalNotificationModel(identifier: UUID().uuidString,
                                                        title: "Wake Up",
@@ -30,7 +32,7 @@ class AlarmViewModel: ObservableObject {
                                                        notificationSound: Constants.notificationSound)
         localNotification.bundleImageName = Constants.bundleImageName
         localNotification.userInfo = ["nextView": NextView.closeTheAlarm.rawValue]
-
+        
         let copiedNotification = localNotification
         Task {
             await lnManager.schedule(localNotification: copiedNotification)
@@ -42,17 +44,21 @@ class AlarmViewModel: ObservableObject {
                     self.isVisible = false
                 }
             }
+            
+            // alarms dizisine tarihi ekleyin
+            alarms.wrappedValue.append(self.scheduleDate)
         }
     }
-
+    
+    
     func setAlarmText() -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm"
-
+        
         let alarmTimeString = dateFormatter.string(from: scheduleDate)
         return "Alarm set to \(alarmTimeString) successfully!"
     }
-
+    
     func requestAuthorization() {
         Task {
             do {
@@ -65,7 +71,7 @@ class AlarmViewModel: ObservableObject {
             }
         }
     }
-
+    
     func getCurrentSettings() async {
         await lnManager.getCurrentSettings()
     }

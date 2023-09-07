@@ -60,6 +60,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(viewModel: AlarmViewModel(lnManager: .init()))
+        ContentView(viewModel: AlarmViewModel(lnManager: .init(), alarms: .constant([.distantFuture])))
     }
 }
