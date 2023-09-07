@@ -10,6 +10,9 @@ import SwiftUI
 struct AlarmView: View {
     @StateObject private var viewModel: AlarmViewModel
     @State private var alarms = [Date]()
+    @State private var isShowingAlarmList = false
+    
+    
     init(viewModel: AlarmViewModel) {
         self._viewModel = StateObject(wrappedValue: viewModel)
     }
@@ -34,29 +37,21 @@ struct AlarmView: View {
                     }
                     
                     ZStack {
-                        
-                        Color("orangeColor")
-                            .frame(width: 410, height: 490, alignment: .center)
-                            .cornerRadius(20)
-                        
-                        Image("bg")
-                            .resizable()
-                            .opacity(0.5)
-                            .scaledToFit()
-                            .frame(width: 200, height: 200, alignment: .center)
-                            .shadow(color: .black, radius: 10, x: 0, y: 10)
-                        
-                        List {
-                            ForEach(alarms, id: \.self) { alarm in
-                                AlarmTableViewCell(alarmDate: alarm)
-                                    .listRowBackground(Color("secondaryBackgroundColor"))
+                        if alarms.count > 0 {
+                            AlarmListBackgroundView(viewModel: viewModel)
+                                
+                            List {
+                                ForEach(alarms, id: \.self) { alarm in
+                                    AlarmTableViewCell(alarmDate: alarm)
+                                        .listRowBackground(Color("secondaryBackgroundColor"))
+                                }
+                                .onDelete(perform: viewModel.deleteItem(at:))
                             }
-                            .onDelete(perform: deleteItem)
+                            .transition(.opacity)
+                            .opacity(viewModel.isListVisible ? 1.0 : 0.0)
+                            .animation(.easeInOut(duration: 1.0), value: viewModel.isListVisible)
                         }
-                        .transition(.opacity)
-                        
                     }
-                    
                     .scrollContentBackground(.hidden)
                     Spacer()
                 }
@@ -70,11 +65,6 @@ struct AlarmView: View {
             await viewModel.getPendingRequests()
         }
         
-    }
-    func deleteItem(at offsets: IndexSet) {
-        withAnimation {
-            alarms.remove(atOffsets: offsets)
-        }
     }
 }
 

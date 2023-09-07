@@ -86,6 +86,11 @@ class LocalNotificationsManager: NSObject, ObservableObject{
         pendingRequests = await notificationCenter.pendingNotificationRequests()
         print("Pending: \(pendingRequests.count)")
     }
+    
+    func deleteNotificationRequest(withIdentifier identifier: String) async {
+        await notificationCenter.removePendingNotificationRequests(withIdentifiers: [identifier])
+        await getPendingRequests()
+    }
 }
 
 extension LocalNotificationsManager:  UNUserNotificationCenterDelegate  {

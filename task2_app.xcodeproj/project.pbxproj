@@ -12,6 +12,7 @@
 		7B481B912AA8AE600070D24E /* ToonyLine.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7B481B8A2AA8AA0E0070D24E /* ToonyLine.otf */; };
 		7B481B932AA8AF640070D24E /* CloseAlarmViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B481B922AA8AF640070D24E /* CloseAlarmViewModel.swift */; };
 		7B481B952AA8C1230070D24E /* AlarmTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B481B942AA8C1230070D24E /* AlarmTableViewCell.swift */; };
+		7B5857A12AAA771A00CE1EC7 /* AlarmListBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5857A02AAA771A00CE1EC7 /* AlarmListBackgroundView.swift */; };
 		7B75A2752A9F9DF500CFD689 /* task2_appApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B75A2742A9F9DF500CFD689 /* task2_appApp.swift */; };
 		7B75A2772A9F9DF500CFD689 /* AlarmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B75A2762A9F9DF500CFD689 /* AlarmView.swift */; };
 		7B75A2792A9F9DF700CFD689 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B75A2782A9F9DF700CFD689 /* Assets.xcassets */; };
@@ -38,6 +39,7 @@
 		7B481B8F2AA8AE5E0070D24E /* Monoton-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Monoton-Regular.ttf"; sourceTree = "<group>"; };
 		7B481B922AA8AF640070D24E /* CloseAlarmViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseAlarmViewModel.swift; sourceTree = "<group>"; };
 		7B481B942AA8C1230070D24E /* AlarmTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmTableViewCell.swift; sourceTree = "<group>"; };
+		7B5857A02AAA771A00CE1EC7 /* AlarmListBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmListBackgroundView.swift; sourceTree = "<group>"; };
 		7B75A2712A9F9DF500CFD689 /* task2_app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = task2_app.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B75A2742A9F9DF500CFD689 /* task2_appApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = task2_appApp.swift; sourceTree = "<group>"; };
 		7B75A2762A9F9DF500CFD689 /* AlarmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmView.swift; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 				7B75A2A42AA23E6C00CFD689 /* DatePickerView.swift */,
 				7B75A2A72AA23FF700CFD689 /* SetAlarmButton.swift */,
 				7B75A2A92AA240A100CFD689 /* AlarmSetText.swift */,
+				7B5857A02AAA771A00CE1EC7 /* AlarmListBackgroundView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -298,6 +301,7 @@
 				7B75A2752A9F9DF500CFD689 /* task2_appApp.swift in Sources */,
 				7B75A28C2A9F9F1900CFD689 /* LocalNotificationModel.swift in Sources */,
 				7B75A2852A9F9EBC00CFD689 /* NextView.swift in Sources */,
+				7B5857A12AAA771A00CE1EC7 /* AlarmListBackgroundView.swift in Sources */,
 				7B481B932AA8AF640070D24E /* CloseAlarmViewModel.swift in Sources */,
 				7B75A2A82AA23FF700CFD689 /* SetAlarmButton.swift in Sources */,
 				7B75A29C2AA2305500CFD689 /* Constants.swift in Sources */,

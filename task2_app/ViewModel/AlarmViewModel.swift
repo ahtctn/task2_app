@@ -13,6 +13,7 @@ class AlarmViewModel: ObservableObject {
     @Published var scheduleDate = Date()
     @Published var isVisible = false
     @Published var isGranted = false
+    @Published var isListVisible = false
     @Binding var alarms: [Date]
     
     var lnManager: LocalNotificationsManager
@@ -38,6 +39,7 @@ class AlarmViewModel: ObservableObject {
             await lnManager.schedule(localNotification: copiedNotification)
             DispatchQueue.main.async {
                 self.isVisible = true
+                self.isListVisible = true
             }
             DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
                 withAnimation {
@@ -45,11 +47,11 @@ class AlarmViewModel: ObservableObject {
                 }
             }
             
-            // alarms dizisine tarihi ekleyin
-            alarms.wrappedValue.append(self.scheduleDate)
+            withAnimation {
+                alarms.wrappedValue.append(self.scheduleDate)
+            }
         }
     }
-    
     
     func setAlarmText() -> String {
         let dateFormatter = DateFormatter()
@@ -79,4 +81,20 @@ class AlarmViewModel: ObservableObject {
     func getPendingRequests() async {
         await lnManager.getPendingRequests()
     }
+    
+    func deleteItem(at offsets: IndexSet) {
+        for index in offsets.reversed() {
+            if index < alarms.count && index >= 0 {
+                let identifier = alarms[index].description
+                withAnimation {
+                    alarms.remove(at: index)
+                }
+                
+                Task {
+                    await lnManager.deleteNotificationRequest(withIdentifier: identifier)
+                }
+            }
+        }
+    }
+    
 }
