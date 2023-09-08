@@ -11,6 +11,7 @@ struct ContentView: View {
     
     @State private var selectedTab = 0
     @StateObject private var alarmViewModel: AlarmViewModel
+
     let navigationTitleColor = Color("orangeColor")
     
     init(viewModel: AlarmViewModel) {
@@ -25,7 +26,7 @@ struct ContentView: View {
         TabView(selection: $selectedTab) {
             NavigationView {
                 AlarmView(viewModel: alarmViewModel)
-                    .navigationBarTitle("Alarm Title", displayMode: .inline)
+                    .navigationBarTitle("Alarm", displayMode: .inline)
             }
             
             .tabItem {
@@ -40,6 +41,7 @@ struct ContentView: View {
             .toolbarBackground(Color.red, for: .tabBar)
             
             NavigationView {
+                //MARK: DEĞİŞTİRİLECEK
                 TimerView()
                     .navigationBarTitle("Timer", displayMode: .inline)
             }

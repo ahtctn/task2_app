@@ -86,9 +86,7 @@ class AlarmViewModel: ObservableObject {
         for index in offsets.reversed() {
             if index < alarms.count && index >= 0 {
                 let identifier = alarms[index].description
-                withAnimation {
-                    alarms.remove(at: index)
-                }
+                alarms.remove(at: index)
                 
                 Task {
                     await lnManager.deleteNotificationRequest(withIdentifier: identifier)

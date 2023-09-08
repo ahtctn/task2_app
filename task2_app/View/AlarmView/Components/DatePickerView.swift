@@ -24,7 +24,6 @@ struct DatePickerView: View {
                 .colorInvert()
                 .colorMultiply(.white)
                 .labelsHidden()
-            //Spacer()
         }
         
     }

@@ -18,10 +18,7 @@ struct SetAlarmButton: View {
     var body: some View {
         
         Button("Set Alarm") {
-            
             viewModel.setAlarm(alarms: $alarms)
-            
-            
         }
         
         
@@ -33,10 +30,9 @@ struct SetAlarmButton: View {
         .buttonBorderShape(.capsule)
         .tint(Color("orangeColor"))
         .foregroundColor(.white)
+        .fontWeight(.bold)
         
     }
-    
-    
 }
 
 struct SetAlarmButton_Previews: PreviewProvider {

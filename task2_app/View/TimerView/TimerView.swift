@@ -8,55 +8,38 @@
 import SwiftUI
 
 struct TimerView: View {
-    @State private var countdownValue: Int = 0
-    @State private var isCountingDown: Bool = false
-    @State private var countdownTimer: Timer? = nil
+    
+    @StateObject private var viewModel = TimerViewModel()
     
     var body: some View {
+        
         ZStack {
             Color("backgroundColor")
                 .ignoresSafeArea()
-            VStack {
-                Text("Countdown: \(countdownValue)")
-                    .font(.largeTitle)
-                    .foregroundColor(.white)
-                
-                Button(isCountingDown ? "Stop" : "Start") {
-                    if isCountingDown {
-                        stopCountdown()
-                    } else {
-                        startCountdown()
-                    }
-                }
-                .padding()
-                .background(Color("orangeColor"))
-                .foregroundColor(.white)
-                .cornerRadius(10)
-            }
-            //.background(Color("backgroundColor"))
-            .background(Color("backgroundColor"), ignoresSafeAreaEdges: .all)
-        }
-    }
     
-    private func startCountdown() {
-        guard countdownValue > 0 else {
-            return // Avoid starting countdown with non-positive value
+            VStack {
+                HStack {
+                    //MARK: BURASI AYRILACAK. (1)
+                    MinutePickerView(viewModel: viewModel)
+                    
+                    //MARK: BURASI AYRILACAK. (2)
+                    SecondPickerView(viewModel: viewModel)
+                }
+                
+                //MARK: BURASI AYRILACAK.(3)
+                CountdownTimerText(viewModel: viewModel)
+                
+                //MARK: BURASI AYRILACAK. (4)
+                PlayPauseButtonView(viewModel: viewModel)
+                
+                //MARK: BURASI AYRILACAK. (5)
+                SetResetButtonView(viewModel: viewModel)
+            }
         }
         
-        isCountingDown = true
-        countdownTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
-            if countdownValue > 0 {
-                countdownValue -= 1
-            } else {
-                stopCountdown()
-            }
+        .onDisappear {
+            viewModel.stopTimer()
         }
-    }
-    
-    private func stopCountdown() {
-        isCountingDown = false
-        countdownTimer?.invalidate()
-        countdownTimer = nil
     }
 }
 

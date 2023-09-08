@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7B3229E02AAB73930036BB8B /* TimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3229DF2AAB73930036BB8B /* TimerViewModel.swift */; };
+		7B3229E32AAB795A0036BB8B /* CountdownTimerText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3229E22AAB795A0036BB8B /* CountdownTimerText.swift */; };
+		7B3229E52AAB7AB50036BB8B /* MinutePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3229E42AAB7AB50036BB8B /* MinutePickerView.swift */; };
+		7B3229E72AAB7B5F0036BB8B /* SecondPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3229E62AAB7B5F0036BB8B /* SecondPickerView.swift */; };
 		7B481B8D2AA8ABD80070D24E /* RubikMonoOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7B481B8C2AA8AB5E0070D24E /* RubikMonoOne-Regular.ttf */; };
 		7B481B902AA8AE5E0070D24E /* Monoton-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7B481B8F2AA8AE5E0070D24E /* Monoton-Regular.ttf */; };
 		7B481B912AA8AE600070D24E /* ToonyLine.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7B481B8A2AA8AA0E0070D24E /* ToonyLine.otf */; };
@@ -30,9 +34,15 @@
 		7B75A2AA2AA240A100CFD689 /* AlarmSetText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B75A2A92AA240A100CFD689 /* AlarmSetText.swift */; };
 		7B75A2AD2AA2463F00CFD689 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B75A2AC2AA2463F00CFD689 /* ContentView.swift */; };
 		7B75A2B12AA2472D00CFD689 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B75A2B02AA2472D00CFD689 /* TimerView.swift */; };
+		7BF990DA2AAB7D1C00F840DD /* PlayPauseButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF990D92AAB7D1C00F840DD /* PlayPauseButtonView.swift */; };
+		7BF990DE2AAB7DDF00F840DD /* SetResetButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF990DD2AAB7DDF00F840DD /* SetResetButtonView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7B3229DF2AAB73930036BB8B /* TimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewModel.swift; sourceTree = "<group>"; };
+		7B3229E22AAB795A0036BB8B /* CountdownTimerText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownTimerText.swift; sourceTree = "<group>"; };
+		7B3229E42AAB7AB50036BB8B /* MinutePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinutePickerView.swift; sourceTree = "<group>"; };
+		7B3229E62AAB7B5F0036BB8B /* SecondPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondPickerView.swift; sourceTree = "<group>"; };
 		7B481B8A2AA8AA0E0070D24E /* ToonyLine.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ToonyLine.otf; sourceTree = "<group>"; };
 		7B481B8C2AA8AB5E0070D24E /* RubikMonoOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RubikMonoOne-Regular.ttf"; sourceTree = "<group>"; };
 		7B481B8E2AA8ACBD0070D24E /* task2-app-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "task2-app-Info.plist"; sourceTree = SOURCE_ROOT; };
@@ -58,6 +68,8 @@
 		7B75A2A92AA240A100CFD689 /* AlarmSetText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmSetText.swift; sourceTree = "<group>"; };
 		7B75A2AC2AA2463F00CFD689 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7B75A2B02AA2472D00CFD689 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
+		7BF990D92AAB7D1C00F840DD /* PlayPauseButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayPauseButtonView.swift; sourceTree = "<group>"; };
+		7BF990DD2AAB7DDF00F840DD /* SetResetButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetResetButtonView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +83,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7B3229E12AAB79440036BB8B /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				7B3229E22AAB795A0036BB8B /* CountdownTimerText.swift */,
+				7B3229E42AAB7AB50036BB8B /* MinutePickerView.swift */,
+				7B3229E62AAB7B5F0036BB8B /* SecondPickerView.swift */,
+				7BF990D92AAB7D1C00F840DD /* PlayPauseButtonView.swift */,
+				7BF990DD2AAB7DDF00F840DD /* SetResetButtonView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		7B481B8B2AA8AA110070D24E /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -145,6 +169,7 @@
 			children = (
 				7B75A2982AA22FA900CFD689 /* AlarmViewModel.swift */,
 				7B481B922AA8AF640070D24E /* CloseAlarmViewModel.swift */,
+				7B3229DF2AAB73930036BB8B /* TimerViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -164,6 +189,7 @@
 				7B75A2A72AA23FF700CFD689 /* SetAlarmButton.swift */,
 				7B75A2A92AA240A100CFD689 /* AlarmSetText.swift */,
 				7B5857A02AAA771A00CE1EC7 /* AlarmListBackgroundView.swift */,
+				7B481B942AA8C1230070D24E /* AlarmTableViewCell.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -201,7 +227,6 @@
 				7B75A2762A9F9DF500CFD689 /* AlarmView.swift */,
 				7B75A2862A9F9ED500CFD689 /* CloseAlarmView.swift */,
 				7B75A2952AA22F6100CFD689 /* Components */,
-				7B481B942AA8C1230070D24E /* AlarmTableViewCell.swift */,
 			);
 			path = AlarmView;
 			sourceTree = "<group>";
@@ -210,6 +235,7 @@
 			isa = PBXGroup;
 			children = (
 				7B75A2B02AA2472D00CFD689 /* TimerView.swift */,
+				7B3229E12AAB79440036BB8B /* Components */,
 			);
 			path = TimerView;
 			sourceTree = "<group>";
@@ -291,16 +317,22 @@
 			files = (
 				7B75A2992AA22FA900CFD689 /* AlarmViewModel.swift in Sources */,
 				7B75A2772A9F9DF500CFD689 /* AlarmView.swift in Sources */,
+				7B3229E52AAB7AB50036BB8B /* MinutePickerView.swift in Sources */,
 				7B75A2AD2AA2463F00CFD689 /* ContentView.swift in Sources */,
 				7B75A2832A9F9E9900CFD689 /* LocalNotificationsManager.swift in Sources */,
+				7BF990DE2AAB7DDF00F840DD /* SetResetButtonView.swift in Sources */,
 				7B75A2AA2AA240A100CFD689 /* AlarmSetText.swift in Sources */,
 				7B481B952AA8C1230070D24E /* AlarmTableViewCell.swift in Sources */,
 				7B75A2B12AA2472D00CFD689 /* TimerView.swift in Sources */,
 				7B75A2A52AA23E6C00CFD689 /* DatePickerView.swift in Sources */,
 				7B75A2872A9F9ED500CFD689 /* CloseAlarmView.swift in Sources */,
+				7B3229E72AAB7B5F0036BB8B /* SecondPickerView.swift in Sources */,
 				7B75A2752A9F9DF500CFD689 /* task2_appApp.swift in Sources */,
 				7B75A28C2A9F9F1900CFD689 /* LocalNotificationModel.swift in Sources */,
 				7B75A2852A9F9EBC00CFD689 /* NextView.swift in Sources */,
+				7B3229E32AAB795A0036BB8B /* CountdownTimerText.swift in Sources */,
+				7BF990DA2AAB7D1C00F840DD /* PlayPauseButtonView.swift in Sources */,
+				7B3229E02AAB73930036BB8B /* TimerViewModel.swift in Sources */,
 				7B5857A12AAA771A00CE1EC7 /* AlarmListBackgroundView.swift in Sources */,
 				7B481B932AA8AF640070D24E /* CloseAlarmViewModel.swift in Sources */,
 				7B75A2A82AA23FF700CFD689 /* SetAlarmButton.swift in Sources */,

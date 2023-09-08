@@ -23,6 +23,7 @@ struct AlarmTableViewCell: View {
             Toggle("Set", isOn: $isOn)
                 .toggleStyle(.button)
                 .tint(Color("orangeColor"))
+                .fontWeight(.bold)
         }
         .background(Color("secondaryBackgroundColor"))
                 
