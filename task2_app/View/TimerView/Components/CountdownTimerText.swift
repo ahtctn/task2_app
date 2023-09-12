@@ -25,6 +25,6 @@ struct CountdownTimerText: View {
 
 struct CountdownTimerText_Previews: PreviewProvider {
     static var previews: some View {
-        CountdownTimerText(viewModel: .init())
+        CountdownTimerText(viewModel: .init(lnManager: LocalNotificationsManager(), alarms: .constant([.distantFuture])))
     }
 }

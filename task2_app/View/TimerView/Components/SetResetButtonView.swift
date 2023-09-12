@@ -30,6 +30,6 @@ struct SetResetButtonView: View {
 
 struct SetResetButtonView_Previews: PreviewProvider {
     static var previews: some View {
-        SetResetButtonView(viewModel: .init())
+        SetResetButtonView(viewModel: .init(lnManager: LocalNotificationsManager(), alarms: .constant([.distantFuture])))
     }
 }

@@ -31,6 +31,6 @@ struct MinutePickerView: View {
 
 struct MinutePickerView_Previews: PreviewProvider {
     static var previews: some View {
-        MinutePickerView(viewModel: .init())
+        MinutePickerView(viewModel: .init(lnManager: LocalNotificationsManager(), alarms: .constant([.distantFuture])))
     }
 }

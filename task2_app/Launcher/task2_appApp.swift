@@ -15,7 +15,7 @@ struct task2_appApp: App {
     var body: some Scene {
         WindowGroup {
             
-            ContentView(viewModel: .init(lnManager: lnManager, alarms: .constant(alarms)))
+            ContentView(alarmViewModel: AlarmViewModel(lnManager: LocalNotificationsManager(), alarms: .constant([.distantFuture])), timerViewModel: TimerViewModel(lnManager: lnManager, alarms: .constant([.distantFuture])))
                 .environmentObject(lnManager)
         }
     }

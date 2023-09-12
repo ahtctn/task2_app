@@ -35,7 +35,7 @@ struct SecondPickerView: View {
 
 struct SecondPickerView_Previews: PreviewProvider {
     static var previews: some View {
-        SecondPickerView(viewModel: .init())
+        SecondPickerView(viewModel: .init(lnManager: LocalNotificationsManager(), alarms: .constant([.distantFuture])))
             .previewLayout(.sizeThatFits)
     }
 }

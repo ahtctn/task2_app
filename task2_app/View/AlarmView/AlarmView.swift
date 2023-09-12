@@ -64,7 +64,6 @@ struct AlarmView: View {
             await viewModel.getCurrentSettings()
             await viewModel.getPendingRequests()
         }
-        
     }
 }
 

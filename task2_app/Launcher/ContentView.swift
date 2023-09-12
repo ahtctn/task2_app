@@ -11,11 +11,13 @@ struct ContentView: View {
     
     @State private var selectedTab = 0
     @StateObject private var alarmViewModel: AlarmViewModel
+    @StateObject private var timerViewModel: TimerViewModel
 
     let navigationTitleColor = Color("orangeColor")
     
-    init(viewModel: AlarmViewModel) {
-        self._alarmViewModel = StateObject(wrappedValue: viewModel)
+    init(alarmViewModel: AlarmViewModel, timerViewModel: TimerViewModel) {
+        self._alarmViewModel = StateObject(wrappedValue: alarmViewModel)
+        self._timerViewModel = StateObject(wrappedValue: timerViewModel)
         
         let uiColor = UIColor(navigationTitleColor)
         UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: uiColor]
@@ -42,7 +44,7 @@ struct ContentView: View {
             
             NavigationView {
                 //MARK: DEĞİŞTİRİLECEK
-                TimerView()
+                TimerView(viewModel: timerViewModel)
                     .navigationBarTitle("Timer", displayMode: .inline)
             }
             .tabItem {
@@ -62,6 +64,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(viewModel: AlarmViewModel(lnManager: .init(), alarms: .constant([.distantFuture])))
+        ContentView(alarmViewModel: AlarmViewModel(lnManager: LocalNotificationsManager(), alarms: .constant([.distantFuture])), timerViewModel: TimerViewModel(lnManager: LocalNotificationsManager(), alarms: .constant([.distantFuture])))
     }
 }
