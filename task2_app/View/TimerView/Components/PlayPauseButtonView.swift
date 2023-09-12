@@ -20,7 +20,7 @@ struct PlayPauseButtonView: View {
     var body: some View {
         Button(viewModel.isTimerRunning ? "Pause" : "Play") {
             viewModel.toggleTimer()
-            //viewModel.timerReachedZero(alarms: $alarms)
+            viewModel.timerReachedZero(alarms: $alarms)
         }
         
         .sheet(item: $viewModel.lnManager.nextView, content: { nextView in

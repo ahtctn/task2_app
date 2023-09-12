@@ -6,16 +6,14 @@
 //
 
 import Foundation
-import NotificationCenter
-
+import UserNotifications
 
 @MainActor
-class LocalNotificationsManager: NSObject, ObservableObject{
+class LocalNotificationsManager: NSObject, ObservableObject {
     let notificationCenter = UNUserNotificationCenter.current()
     @Published var isGranted = false
     @Published var pendingRequests: [UNNotificationRequest] = []
     @Published var nextView: NextView?
-    
     
     override init() {
         super.init()
@@ -30,7 +28,6 @@ class LocalNotificationsManager: NSObject, ObservableObject{
     func getCurrentSettings() async {
         let currentSettings = await notificationCenter.notificationSettings()
         isGranted = (currentSettings.authorizationStatus == .authorized)
-        print(isGranted)
     }
     
     func schedule(localNotification: LocalNotificationModel) async {
@@ -49,7 +46,6 @@ class LocalNotificationsManager: NSObject, ObservableObject{
         if let categoryIdentifier = localNotification.categoryIdentifier {
             content.categoryIdentifier = categoryIdentifier
         }
-        
         
         if let notificationSound = localNotification.notificationSound {
             content.sound = notificationSound
@@ -70,13 +66,15 @@ class LocalNotificationsManager: NSObject, ObservableObject{
             let request = UNNotificationRequest(identifier: localNotification.identifier, content: content, trigger: trigger)
             
             try? await notificationCenter.add(request)
-        } else {
+            print("yok bura girdi")
+        } else if localNotification.scheduleType == .calendar{
             guard let dateComponents = localNotification.dateComponents else { return }
             let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: localNotification.repeats)
             
             let request = UNNotificationRequest(identifier: localNotification.identifier, content: content, trigger: trigger)
             
             try? await notificationCenter.add(request)
+            print("bura girdi")
         }
         
         await getPendingRequests()
@@ -84,7 +82,6 @@ class LocalNotificationsManager: NSObject, ObservableObject{
     
     func getPendingRequests() async {
         pendingRequests = await notificationCenter.pendingNotificationRequests()
-        print("Pending: \(pendingRequests.count)")
     }
     
     func deleteNotificationRequest(withIdentifier identifier: String) async {
@@ -93,14 +90,12 @@ class LocalNotificationsManager: NSObject, ObservableObject{
     }
 }
 
-extension LocalNotificationsManager:  UNUserNotificationCenterDelegate  {
-    
+extension LocalNotificationsManager: UNUserNotificationCenterDelegate {
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification) async -> UNNotificationPresentationOptions {
         return await withUnsafeContinuation { continuation in
             continuation.resume(returning: [.sound, .banner])
         }
     }
-
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse) async {
         if let value = response.notification.request.content.userInfo["nextView"] as? String {

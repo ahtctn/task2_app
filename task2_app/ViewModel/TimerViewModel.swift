@@ -28,38 +28,6 @@ class TimerViewModel: ObservableObject {
         self._alarms = alarms
     }
     
-    /*
-    func setAlarm(alarms: Binding<[Date]>) {
-        let dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: scheduleDate)
-        var localNotification = LocalNotificationModel(identifier: UUID().uuidString,
-                                                       title: "It's time",
-                                                       body: "Countdown end.",
-                                                       repeats: false,
-                                                       dateComponents: dateComponents,
-                                                       notificationSound: Constants.notificationSound)
-        localNotification.bundleImageName = Constants.bundleImageName
-        localNotification.userInfo = ["nextView": NextView.closeTheAlarm.rawValue]
-        
-        let copiedNotification = localNotification
-        Task {
-            await lnManager.schedule(localNotification: copiedNotification)
-            DispatchQueue.main.async {
-                self.isVisible = true
-                self.isListVisible = true
-            }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
-                withAnimation {
-                    self.isVisible = false
-                }
-            }
-            
-            withAnimation {
-                alarms.wrappedValue.append(self.scheduleDate)
-            }
-        }
-    }
-    */
-    
     func requestAuthorization() {
         Task {
             do {
@@ -89,6 +57,15 @@ class TimerViewModel: ObservableObject {
         }
     }
     
+    private func updateTimer() {
+        if remainingTime > 0 {
+            remainingTime -= 1
+        } else {
+            stopTimer()
+            timerReachedZero(alarms: $alarms)
+        }
+    }
+    
     func startTimer() {
         let totalTime = TimeInterval(selectedMinutes * 60 + selectedSeconds)
         remainingTime = totalTime
@@ -98,8 +75,9 @@ class TimerViewModel: ObservableObject {
             if self.remainingTime > 0 {
                 self.remainingTime -= 1
             } else {
-                self.timerReachedZero(alarms: self.$alarms)
+                
                 self.stopTimer()
+                print("timer 0 oldur")
             }
         }
     }
@@ -110,6 +88,7 @@ class TimerViewModel: ObservableObject {
     }
     
     func stopTimer() {
+        self.timerReachedZero(alarms: self.$alarms)
         timer?.invalidate()
         timer = nil
         isTimerRunning = false
@@ -128,7 +107,7 @@ class TimerViewModel: ObservableObject {
     }
     
     func timerReachedZero(alarms: Binding<[Date]>) {
-        let dateComponents = Calendar.current.dateComponents([.hour, .minute], from: Date())
+        let dateComponents = Calendar.current.dateComponents([.hour, .minute], from: scheduleDate)
         var localNotification = LocalNotificationModel(identifier: UUID().uuidString,
                                                        title: "Countdown Timer Ended",
                                                        body: "Your countdown timer has reached zero.",
@@ -153,8 +132,18 @@ class TimerViewModel: ObservableObject {
             
             withAnimation {
                 alarms.wrappedValue.append(self.scheduleDate)
+                print("\(alarms) Alarms")
+                
+                if alarms.isEmpty {
+                    print("alarms is empty")
+                } else {
+                    print("alarms is not empty")
+                    
+                    for _alarm in _alarms {
+                        print("\(_alarm.self)")
+                    }
+                }
             }
         }
     }
 }
-

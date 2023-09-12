@@ -26,16 +26,11 @@ struct TimerView: View {
                 VStack {
                     if viewModel.isGranted {
                         HStack {
-                            //MARK: BURASI AYRILACAK. (1)
                             MinutePickerView(viewModel: viewModel)
-                            //MARK: BURASI AYRILACAK. (2)
                             SecondPickerView(viewModel: viewModel)
                         }
-                        //MARK: BURASI AYRILACAK.(3)
                         CountdownTimerText(viewModel: viewModel)
-                        //MARK: BURASI AYRILACAK. (4)
                         PlayPauseButtonView(viewModel: viewModel, alarms: $alarms)
-                        //MARK: BURASI AYRILACAK. (5)
                         SetResetButtonView(viewModel: viewModel)
                     }
                 }

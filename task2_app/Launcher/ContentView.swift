@@ -43,7 +43,6 @@ struct ContentView: View {
             .toolbarBackground(Color.red, for: .tabBar)
             
             NavigationView {
-                //MARK: DEĞİŞTİRİLECEK
                 TimerView(viewModel: timerViewModel)
                     .navigationBarTitle("Timer", displayMode: .inline)
             }
