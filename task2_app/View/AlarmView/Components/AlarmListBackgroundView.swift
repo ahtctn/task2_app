@@ -27,7 +27,6 @@ struct AlarmListBackgroundView: View {
                 .frame(width: 200, height: 200, alignment: .center)
                 .shadow(color: .black, radius: 10, x: 0, y: 10)
         }
-        .opacity(viewModel.isListVisible ? 1.0 : 0.0) // Yalnızca liste için isListVisible kullanılıyor
         .opacity(viewModel.isListVisible ? 1.0 : 0.0)
         .animation(.easeInOut(duration: 0.5), value: viewModel.isListVisible)
 

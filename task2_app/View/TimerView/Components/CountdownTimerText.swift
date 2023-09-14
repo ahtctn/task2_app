@@ -15,10 +15,11 @@ struct CountdownTimerText: View {
             Color("orangeColor")
                 .frame(width: 200, height: 100, alignment: .center)
                 .cornerRadius(10)
-            
+                
             Text(viewModel.formattedTime(viewModel.remainingTime))
-                .font(.custom(Constants.closeAlarmViewHourFont2, size: 40))
+                .font(.custom(Constants.closeAlarmViewHourFont1, size: 40))
                 .foregroundColor(.white)
+                .animation(.easeInOut(duration: 0.5))
         }
     }
 }

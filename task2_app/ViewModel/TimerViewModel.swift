@@ -8,6 +8,7 @@
 import Foundation
 import UserNotifications
 import SwiftUI
+import AVFoundation
 
 class TimerViewModel: ObservableObject {
     @Published var scheduleDate = Date()
@@ -18,7 +19,10 @@ class TimerViewModel: ObservableObject {
     @Published var selectedSeconds = 0
     @Published var remainingTime: TimeInterval = 0
     @Published var isTimerRunning = false
+    @Published var isShowingCloseCountdownTimerView = false
     private var timer: Timer? = nil
+    
+    var audioPlayer: AVAudioPlayer?
     
     @Binding var alarms: [Date]
     var lnManager: LocalNotificationsManager
@@ -62,7 +66,6 @@ class TimerViewModel: ObservableObject {
             remainingTime -= 1
         } else {
             stopTimer()
-            timerReachedZero(alarms: $alarms)
         }
     }
     
@@ -77,7 +80,19 @@ class TimerViewModel: ObservableObject {
             } else {
                 
                 self.stopTimer()
+                self.playNotificationSound(soundFile: Constants.alarmSound)
+                self.isShowingCloseCountdownTimerView = true
+                
                 print("timer 0 oldur")
+                let dateComponents = Calendar.current.dateComponents([.hour, .minute], from: self.scheduleDate)
+                var localNotification = LocalNotificationModel(identifier: UUID().uuidString,
+                                                               title: "Countdown Timer Ended",
+                                                               body: "Your countdown timer has reached zero.",
+                                                               repeats: false,
+                                                               dateComponents: dateComponents,
+                                                               notificationSound: Constants.notificationSound)
+                localNotification.bundleImageName = Constants.bundleImageName
+                localNotification.userInfo = ["nextView": NextView.closeTheAlarm.rawValue]
             }
         }
     }
@@ -88,16 +103,20 @@ class TimerViewModel: ObservableObject {
     }
     
     func stopTimer() {
-        self.timerReachedZero(alarms: self.$alarms)
         timer?.invalidate()
         timer = nil
         isTimerRunning = false
+    }
+    
+    func closeAlarm() {
+        stopTimer()
     }
     
     func resetTimer() {
         stopTimer()
         selectedMinutes = 0
         selectedSeconds = 0
+        audioPlayer?.stop()
     }
     
     func formattedTime(_ timeInterval: TimeInterval) -> String {
@@ -123,6 +142,7 @@ class TimerViewModel: ObservableObject {
             DispatchQueue.main.async {
                 self.isVisible = true
                 self.isListVisible = true
+                
             }
             DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
                 withAnimation {
@@ -132,18 +152,18 @@ class TimerViewModel: ObservableObject {
             
             withAnimation {
                 alarms.wrappedValue.append(self.scheduleDate)
-                print("\(alarms) Alarms")
-                
-                if alarms.isEmpty {
-                    print("alarms is empty")
-                } else {
-                    print("alarms is not empty")
-                    
-                    for _alarm in _alarms {
-                        print("\(_alarm.self)")
-                    }
-                }
             }
+        }
+    }
+    
+    func playNotificationSound(soundFile: String) {
+        let resourcePath = Bundle.main.url(forResource: soundFile, withExtension: "aiff")
+        
+        do {
+            audioPlayer = try AVAudioPlayer(contentsOf: resourcePath!)
+            audioPlayer?.play()
+        } catch {
+            print(error.localizedDescription)
         }
     }
 }

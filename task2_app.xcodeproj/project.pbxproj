@@ -34,6 +34,7 @@
 		7B75A2AA2AA240A100CFD689 /* AlarmSetText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B75A2A92AA240A100CFD689 /* AlarmSetText.swift */; };
 		7B75A2AD2AA2463F00CFD689 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B75A2AC2AA2463F00CFD689 /* ContentView.swift */; };
 		7B75A2B12AA2472D00CFD689 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B75A2B02AA2472D00CFD689 /* TimerView.swift */; };
+		7B921F702AB3597E00D8E4A2 /* CloseCountdownTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B921F6F2AB3597E00D8E4A2 /* CloseCountdownTimerView.swift */; };
 		7BF990DA2AAB7D1C00F840DD /* PlayPauseButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF990D92AAB7D1C00F840DD /* PlayPauseButtonView.swift */; };
 		7BF990DE2AAB7DDF00F840DD /* SetResetButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF990DD2AAB7DDF00F840DD /* SetResetButtonView.swift */; };
 /* End PBXBuildFile section */
@@ -68,6 +69,7 @@
 		7B75A2A92AA240A100CFD689 /* AlarmSetText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmSetText.swift; sourceTree = "<group>"; };
 		7B75A2AC2AA2463F00CFD689 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7B75A2B02AA2472D00CFD689 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
+		7B921F6F2AB3597E00D8E4A2 /* CloseCountdownTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseCountdownTimerView.swift; sourceTree = "<group>"; };
 		7BF990D92AAB7D1C00F840DD /* PlayPauseButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayPauseButtonView.swift; sourceTree = "<group>"; };
 		7BF990DD2AAB7DDF00F840DD /* SetResetButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetResetButtonView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -91,6 +93,7 @@
 				7B3229E62AAB7B5F0036BB8B /* SecondPickerView.swift */,
 				7BF990D92AAB7D1C00F840DD /* PlayPauseButtonView.swift */,
 				7BF990DD2AAB7DDF00F840DD /* SetResetButtonView.swift */,
+				7B921F6F2AB3597E00D8E4A2 /* CloseCountdownTimerView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -318,6 +321,7 @@
 				7B75A2992AA22FA900CFD689 /* AlarmViewModel.swift in Sources */,
 				7B75A2772A9F9DF500CFD689 /* AlarmView.swift in Sources */,
 				7B3229E52AAB7AB50036BB8B /* MinutePickerView.swift in Sources */,
+				7B921F702AB3597E00D8E4A2 /* CloseCountdownTimerView.swift in Sources */,
 				7B75A2AD2AA2463F00CFD689 /* ContentView.swift in Sources */,
 				7B75A2832A9F9E9900CFD689 /* LocalNotificationsManager.swift in Sources */,
 				7BF990DE2AAB7DDF00F840DD /* SetResetButtonView.swift in Sources */,

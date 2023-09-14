@@ -66,7 +66,6 @@ class LocalNotificationsManager: NSObject, ObservableObject {
             let request = UNNotificationRequest(identifier: localNotification.identifier, content: content, trigger: trigger)
             
             try? await notificationCenter.add(request)
-            print("yok bura girdi")
         } else if localNotification.scheduleType == .calendar{
             guard let dateComponents = localNotification.dateComponents else { return }
             let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: localNotification.repeats)
@@ -74,7 +73,7 @@ class LocalNotificationsManager: NSObject, ObservableObject {
             let request = UNNotificationRequest(identifier: localNotification.identifier, content: content, trigger: trigger)
             
             try? await notificationCenter.add(request)
-            print("bura girdi")
+            
         }
         
         await getPendingRequests()

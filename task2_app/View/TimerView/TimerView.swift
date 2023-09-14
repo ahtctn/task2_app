@@ -12,6 +12,7 @@ struct TimerView: View {
     @StateObject var viewModel: TimerViewModel
     @State private var alarms = [Date]()
     
+    
     init(viewModel: TimerViewModel) {
         self._viewModel = StateObject(wrappedValue: viewModel)
     }
@@ -20,16 +21,26 @@ struct TimerView: View {
         
         NavigationView {
             ZStack {
+                
+                if viewModel.isShowingCloseCountdownTimerView {
+                    CloseCountdownTimerView()
+                        .onTapGesture {
+                            viewModel.startTimer()
+                            viewModel.isShowingCloseCountdownTimerView = false
+                        }
+                        .transition(.move(edge: .bottom))
+                }
+                
                 Color("backgroundColor")
                     .ignoresSafeArea()
                 
                 VStack {
                     if viewModel.isGranted {
+                        CountdownTimerText(viewModel: viewModel)
                         HStack {
                             MinutePickerView(viewModel: viewModel)
                             SecondPickerView(viewModel: viewModel)
                         }
-                        CountdownTimerText(viewModel: viewModel)
                         PlayPauseButtonView(viewModel: viewModel, alarms: $alarms)
                         SetResetButtonView(viewModel: viewModel)
                     }

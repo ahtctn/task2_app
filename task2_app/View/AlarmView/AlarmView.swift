@@ -23,37 +23,37 @@ struct AlarmView: View {
             ZStack {
                 Color("backgroundColor")
                     .ignoresSafeArea(.all)
-                VStack(alignment: .center, spacing: 10) {
-                    if viewModel.isGranted {
-                        //MARK: VSTACK BUNUN İÇERİSİNE EKLENECEK.
-                    }
-                    Spacer()
-                    DatePickerView(viewModel: viewModel)
-                        .labelsHidden()
-                    SetAlarmButton(viewModel: viewModel, alarms: $alarms)
+                if viewModel.isGranted {
                     
-                    if viewModel.isVisible {
-                        AlarmSetText(viewModel: viewModel)
-                    }
-                    
-                    ZStack {
-                        if alarms.count > 0 {
-                            AlarmListBackgroundView(viewModel: viewModel)
-                                
-                            List {
-                                ForEach(alarms, id: \.self) { alarm in
-                                    AlarmTableViewCell(alarmDate: alarm)
-                                        .listRowBackground(Color("secondaryBackgroundColor"))
-                                }
-                                .onDelete(perform: viewModel.deleteItem(at:))
-                            }
-                            .transition(.opacity)
-                            .opacity(viewModel.isListVisible ? 1.0 : 0.0)
-                            .animation(.easeInOut(duration: 1.0), value: viewModel.isListVisible)
+                    VStack(alignment: .center, spacing: 10) {
+                        Spacer()
+                        DatePickerView(viewModel: viewModel)
+                            .labelsHidden()
+                        SetAlarmButton(viewModel: viewModel, alarms: $alarms)
+                        
+                        if viewModel.isVisible {
+                            AlarmSetText(viewModel: viewModel)
                         }
+                        
+                        ZStack {
+                            if alarms.count > 0 {
+                                AlarmListBackgroundView(viewModel: viewModel)
+                                
+                                List {
+                                    ForEach(alarms, id: \.self) { alarm in
+                                        AlarmTableViewCell(alarmDate: alarm)
+                                            .listRowBackground(Color("secondaryBackgroundColor"))
+                                    }
+                                    .onDelete(perform: viewModel.deleteItem(at:))
+                                }
+                                .transition(.opacity)
+                                .opacity(viewModel.isListVisible ? 1.0 : 0.0)
+                                .animation(.easeInOut(duration: 1.0), value: viewModel.isListVisible)
+                            }
+                        }
+                        .scrollContentBackground(.hidden)
+                        Spacer()
                     }
-                    .scrollContentBackground(.hidden)
-                    Spacer()
                 }
                 
             }

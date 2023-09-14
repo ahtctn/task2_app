@@ -9,6 +9,7 @@ import SwiftUI
 
 enum NextView: String, Identifiable {
     case closeTheAlarm
+    case closeTheCountdownTimer
     var id: String {
         self.rawValue
     }
@@ -18,6 +19,9 @@ enum NextView: String, Identifiable {
         switch self {
          case .closeTheAlarm:
             CloseAlarmView(viewModel: .init(lnManager: LocalNotificationsManager()))
+            
+        case .closeTheCountdownTimer:
+            CloseCountdownTimerView()
         }
     }
 }
